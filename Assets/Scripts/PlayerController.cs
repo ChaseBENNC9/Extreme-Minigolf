@@ -15,8 +15,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public float force = 5f;
 
-    private bool canSwipe; //Prevents the player from swiping several without lifting their finger
+    public bool canSwipe; //Prevents the player from swiping several without lifting their finger
 
     // Start is called before the first frame update
     void Start()
@@ -38,14 +39,9 @@ public class PlayerController : MonoBehaviour
     public void Touch(InputAction.CallbackContext context)
     {
         
-        if(context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("Touch Begin");
 
-        }
         if (context.phase == InputActionPhase.Canceled)
         {
-            Debug.Log("Touch End");
             canSwipe = true;
         }
     }
@@ -54,18 +50,20 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void OnSwipe(InputAction.CallbackContext context)
     {
-        Debug.Log("Swipe");
         if (!canSwipe)
         {
             return;
         }
         canSwipe = false;
         Vector2 swipeDirection = context.ReadValue<Vector2>();
-        if (swipeDirection.x == float.NaN ||swipeDirection.y == float.NaN || swipeDirection.x == Mathf.Infinity || swipeDirection.y == Mathf.Infinity)
+        if (swipeDirection.x == float.NaN ||swipeDirection.y == float.NaN || swipeDirection.x == Mathf.Infinity || swipeDirection.y == Mathf.Infinity || swipeDirection.x == 0 || swipeDirection.y == 0)
         {
             return;
         }
-        gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(swipeDirection.x, 0, swipeDirection.y) * 0.05f , ForceMode.Impulse);
+     
+        Debug.Log(swipeDirection);
+        Debug.Log(swipeDirection.normalized);
+        gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(swipeDirection.normalized.x,0,swipeDirection.normalized.y) * force  , ForceMode.VelocityChange);
     }
 
 

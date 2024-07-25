@@ -301,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31237638, y: 0, z: 0, w: 0.94995844}
+  m_LocalRotation: {x: 0.31237638, y: -0, z: -0, w: 0.94995844}
   m_LocalPosition: {x: 0, y: 10, z: -5.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -432,7 +432,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416808953}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 21aeb58b69a427747a99a07a3cc40eb2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -466,7 +466,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0242e2704223ed544bdf05a9a943be64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -523,6 +523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49809d088b73c746ac98e0b26571a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 5
+  canSwipe: 0
 --- !u!114 &1416808960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,9 +728,9 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 297724484450908954}
   - {fileID: 1016185295}
+  - {fileID: 963194228}
   - {fileID: 1416808958}
   - {fileID: 6759919370654777344}
