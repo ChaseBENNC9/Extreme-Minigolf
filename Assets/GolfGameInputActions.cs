@@ -53,6 +53,15 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Drag"",
+                    ""type"": ""Value"",
+                    ""id"": ""f816e642-931c-44c0-9177-d6f7be91dd78"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""TouchPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9eb3cd84-826f-4ad3-8163-d37da01341dc"",
+                    ""path"": ""<Touchscreen>/primaryTouch/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +119,7 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
         m_Mobile_TouchInput = m_Mobile.FindAction("TouchInput", throwIfNotFound: true);
         m_Mobile_TouchPress = m_Mobile.FindAction("TouchPress", throwIfNotFound: true);
         m_Mobile_TouchPos = m_Mobile.FindAction("TouchPos", throwIfNotFound: true);
+        m_Mobile_Drag = m_Mobile.FindAction("Drag", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,6 +184,7 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Mobile_TouchInput;
     private readonly InputAction m_Mobile_TouchPress;
     private readonly InputAction m_Mobile_TouchPos;
+    private readonly InputAction m_Mobile_Drag;
     public struct MobileActions
     {
         private @GolfGameInputActions m_Wrapper;
@@ -170,6 +192,7 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
         public InputAction @TouchInput => m_Wrapper.m_Mobile_TouchInput;
         public InputAction @TouchPress => m_Wrapper.m_Mobile_TouchPress;
         public InputAction @TouchPos => m_Wrapper.m_Mobile_TouchPos;
+        public InputAction @Drag => m_Wrapper.m_Mobile_Drag;
         public InputActionMap Get() { return m_Wrapper.m_Mobile; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -188,6 +211,9 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
             @TouchPos.started += instance.OnTouchPos;
             @TouchPos.performed += instance.OnTouchPos;
             @TouchPos.canceled += instance.OnTouchPos;
+            @Drag.started += instance.OnDrag;
+            @Drag.performed += instance.OnDrag;
+            @Drag.canceled += instance.OnDrag;
         }
 
         private void UnregisterCallbacks(IMobileActions instance)
@@ -201,6 +227,9 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
             @TouchPos.started -= instance.OnTouchPos;
             @TouchPos.performed -= instance.OnTouchPos;
             @TouchPos.canceled -= instance.OnTouchPos;
+            @Drag.started -= instance.OnDrag;
+            @Drag.performed -= instance.OnDrag;
+            @Drag.canceled -= instance.OnDrag;
         }
 
         public void RemoveCallbacks(IMobileActions instance)
@@ -223,5 +252,6 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
         void OnTouchInput(InputAction.CallbackContext context);
         void OnTouchPress(InputAction.CallbackContext context);
         void OnTouchPos(InputAction.CallbackContext context);
+        void OnDrag(InputAction.CallbackContext context);
     }
 }

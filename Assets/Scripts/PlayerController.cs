@@ -46,20 +46,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-         startPos = Vector3.zero;
-         endPos = Vector3.zero;
-
-
 
     }
 
-    public void Launch(Vector2 delta)
+    public void Launch(Vector3 delta)
     {
-        Vector3 direction = new Vector3(-delta.x, 0, -delta.y);
-        gameObject.GetComponent<Rigidbody>().AddForce(direction.normalized * force, ForceMode.Impulse);
+        Vector3 direction = new Vector3(-delta.x, 0, -delta.z);
+        Debug.Log("Direction: " + direction);
+        gameObject.GetComponent<Rigidbody>().AddForce(direction , ForceMode.Impulse);
         
     }
-
-
 
 }
