@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
     }
     void Start()
     {
-        inputActions.Mobile.TouchPos.started += context => TouchStart(context);
+        inputActions.Mobile.TouchPos.performed += context => TouchStart(context);
         inputActions.Mobile.TouchPress.canceled += context => TouchEnd(context);
         inputActions.Mobile.Drag.started += context => OnDrag(context);
 
@@ -30,6 +30,7 @@ public class InputManager : MonoBehaviour
     private void TouchStart(InputAction.CallbackContext context)
     {
         {
+            Debug.Log("Touch Start");
             Vector2 mousePos = inputActions.Mobile.TouchPos.ReadValue<Vector2>();
             Rigidbody rb = GameObject.Find("GolfBall").GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
@@ -102,6 +103,8 @@ public class InputManager : MonoBehaviour
 
             PlayerController.i.line.enabled = false;
             PlayerController.i.Launch(PositionDifference(PlayerController.i.startPos, PlayerController.i.endPos));
+            PlayerController.i.startPos = PlayerController.i.endPos;
+
         }
 
 
