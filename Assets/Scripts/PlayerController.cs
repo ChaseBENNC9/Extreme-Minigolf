@@ -19,15 +19,13 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float force = 5f;
 
-    public bool canSwipe; //Prevents the player from swiping several without lifting their finger
-    private Vector2 swipeForce; //The force of the swipe
     public Vector3 startPos; //The starting position of the swipe
     public Vector3 endPos; //The ending position of the swipe
-    private Camera cam;
     public static PlayerController i;
     public LineRenderer line;
+
+
 
 
     void Awake()
