@@ -31,6 +31,8 @@ public class InputManager : MonoBehaviour
     {
         {
             Vector2 mousePos = inputActions.Mobile.TouchPos.ReadValue<Vector2>();
+            Rigidbody rb = GameObject.Find("GolfBall").GetComponent<Rigidbody>();
+            rb.velocity = Vector3.zero;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
             if (Physics.Raycast(ray, out RaycastHit hit))
