@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        startPos = Vector3.zero;
+        endPos = Vector3.zero;
 
     }
 
