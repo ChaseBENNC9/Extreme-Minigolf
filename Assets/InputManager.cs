@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         inputActions.Mobile.TouchPos.performed += context => TouchStart(context);
-        inputActions.Mobile.TouchPress.canceled += context => PlayerController.i.line.enabled = false;
+        inputActions.Mobile.TouchPress.canceled += context => TouchEnd(context);
         inputActions.Mobile.Drag.started += context => OnDrag(context);
     }
 
