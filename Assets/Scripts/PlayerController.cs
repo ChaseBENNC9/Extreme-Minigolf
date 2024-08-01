@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
     public void Launch(Vector3 delta)
     {
         Vector3 direction = new Vector3(-delta.x, 0, -delta.z);
-        Debug.Log("Direction: " + direction);
         gameObject.GetComponent<Rigidbody>().AddForce(direction , ForceMode.Impulse);
         
     }

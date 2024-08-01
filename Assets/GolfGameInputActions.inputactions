@@ -58,7 +58,7 @@
                     "name": "",
                     "id": "79529dc8-e3b4-4235-9c26-6b8df50d6ced",
                     "path": "<Touchscreen>/primaryTouch/press",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "TouchPress",
