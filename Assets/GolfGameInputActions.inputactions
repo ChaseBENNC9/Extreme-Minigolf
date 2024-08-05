@@ -88,6 +88,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Debug",
+            "id": "f405bde4-e838-45ed-9fd6-399dd9a2443e",
+            "actions": [
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "b2b25e90-33b3-4ca1-9d0a-896111c51f6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "98e20221-7d9c-4db6-aa4b-f6f3efb9858b",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

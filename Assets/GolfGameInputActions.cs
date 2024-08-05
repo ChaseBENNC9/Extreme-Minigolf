@@ -110,6 +110,34 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""f405bde4-e838-45ed-9fd6-399dd9a2443e"",
+            ""actions"": [
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2b25e90-33b3-4ca1-9d0a-896111c51f6a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""98e20221-7d9c-4db6-aa4b-f6f3efb9858b"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -120,6 +148,9 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
         m_Mobile_TouchPress = m_Mobile.FindAction("TouchPress", throwIfNotFound: true);
         m_Mobile_TouchPos = m_Mobile.FindAction("TouchPos", throwIfNotFound: true);
         m_Mobile_Drag = m_Mobile.FindAction("Drag", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_Reload = m_Debug.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -247,11 +278,61 @@ public partial class @GolfGameInputActions: IInputActionCollection2, IDisposable
         }
     }
     public MobileActions @Mobile => new MobileActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private List<IDebugActions> m_DebugActionsCallbackInterfaces = new List<IDebugActions>();
+    private readonly InputAction m_Debug_Reload;
+    public struct DebugActions
+    {
+        private @GolfGameInputActions m_Wrapper;
+        public DebugActions(@GolfGameInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Reload => m_Wrapper.m_Debug_Reload;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void AddCallbacks(IDebugActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DebugActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DebugActionsCallbackInterfaces.Add(instance);
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
+        }
+
+        private void UnregisterCallbacks(IDebugActions instance)
+        {
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
+        }
+
+        public void RemoveCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDebugActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DebugActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DebugActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     public interface IMobileActions
     {
         void OnTouchInput(InputAction.CallbackContext context);
         void OnTouchPress(InputAction.CallbackContext context);
         void OnTouchPos(InputAction.CallbackContext context);
         void OnDrag(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnReload(InputAction.CallbackContext context);
     }
 }

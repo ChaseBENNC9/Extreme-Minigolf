@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class InputManager : MonoBehaviour
         inputActions.Mobile.TouchPos.performed += context => TouchStart(context);
         inputActions.Mobile.TouchPress.canceled += context => TouchEnd(context);
         inputActions.Mobile.Drag.started += context => OnDrag(context);
+        inputActions.Debug.Reload.performed += context => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void TouchStart(InputAction.CallbackContext context)
