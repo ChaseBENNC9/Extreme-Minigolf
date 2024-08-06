@@ -25,7 +25,6 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         SortTracks();
-        currentTrack = tracksInMap[0];
     }
 
     void SortTracks()
@@ -44,6 +43,8 @@ public class LevelManager : MonoBehaviour
             }
         }
         tracksInMap.Add(track);
+        SortTracks();
+        currentTrack = tracksInMap[0];
     }
     private void RemoveFirstTrack()
     {

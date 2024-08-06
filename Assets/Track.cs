@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Track : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Track : MonoBehaviour
         {
             LevelManager.instance.currentTrack = this.gameObject;
             LevelManager.instance.GenerateSection();
+            gameObject.transform.Find("Collider").GetComponent<BoxCollider>().enabled = true;
         }
 
     }

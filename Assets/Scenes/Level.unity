@@ -1326,6 +1326,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Straight_Walls
       objectReference: {fileID: 0}
+    - target: {fileID: 5639497758059720075, guid: dda60494194ecd542997dfb3c998a962,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191916041821737260, guid: dda60494194ecd542997dfb3c998a962,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
