@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "MobileProject1.sln"
+    "dotnet.defaultSolution": "Extreme Mini Golf.sln"
 }
