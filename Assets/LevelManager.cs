@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        GenerateSection(false);
         SortTracks();
     }
 
@@ -53,13 +54,16 @@ public class LevelManager : MonoBehaviour
         SortTracks();
     }
     
-    public void GenerateSection()
+    public void GenerateSection(bool remove = true)
     {
-        if (tracksInMap.Count == 0 || tracksInMap[0] == currentTrack || tracksInMap[0] == null)
+        if (remove)
         {
-            return;
+            RemoveFirstTrack();
+            if (tracksInMap.Count == 0 || tracksInMap[0] == currentTrack || tracksInMap[0] == null)
+            {
+                return;
+            }
         }
-        RemoveFirstTrack();
         GenerateNormal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 15));
         GenerateNormal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 30));
         GenerateHazard(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 45));
@@ -71,7 +75,16 @@ public class LevelManager : MonoBehaviour
 
     public void GenerateHazard(Vector3 position)
     {
+        if (hazardPrefabs.Count == 0)
+        {
+            return;
+        }
         int i = Random.Range(0, hazardPrefabs.Count);
+
+
+
         Instantiate(hazardPrefabs[i], position, Quaternion.identity);
+        hazardPrefabs.RemoveAt(i); // Only 1 hazard of each type
+
     }
 }
