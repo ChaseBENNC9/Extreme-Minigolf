@@ -56,17 +56,13 @@ public class LevelManager : MonoBehaviour
     
     public void GenerateSection(bool remove = true)
     {
-        if (remove)
-        {
-            RemoveFirstTrack();
-            if (tracksInMap.Count == 0 || tracksInMap[0] == currentTrack || tracksInMap[0] == null)
-            {
-                return;
-            }
-        }
+        // if (remove)
+        // {
+        //     RemoveFirstTrack();
+  
+        // }
         GenerateNormal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 15));
-        GenerateNormal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 30));
-        GenerateHazard(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 45));
+        GenerateHazard(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 30));
     }
     public void GenerateNormal(Vector3 position)
     {

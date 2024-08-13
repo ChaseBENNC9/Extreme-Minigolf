@@ -17,7 +17,6 @@ public class Track : MonoBehaviour
         {
             LevelManager.instance.currentTrack = this.gameObject;
             LevelManager.instance.GenerateSection();
-            gameObject.transform.Find("Collider").GetComponent<BoxCollider>().enabled = true;
         }
 
     }
