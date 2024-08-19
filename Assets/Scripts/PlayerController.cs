@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 endPos; //The ending position of the swipe
     public static PlayerController i;
     public LineRenderer line;
-
+    public int sectionMoves = 0;
 
 
 
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     public void Launch(Vector3 delta)
     {
         Vector3 direction = new Vector3(-delta.x, 0, -delta.z);
+        sectionMoves++;
         gameObject.GetComponent<Rigidbody>().AddForce(direction * 2f , ForceMode.Impulse);
         
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,17 +15,42 @@ public class LevelManager : MonoBehaviour
 [SerializeField]
     private List<GameObject> tracksInMap = new ();
     public static LevelManager instance;
+
+    public TextMeshProUGUI scoreText;
+    public int score;
     void Awake()
     {
+        Debug.Log("LevelManager Awake");
         if (instance == null)
         {
             instance = this;
         }
     }
 
+    public void UpdateScore()
+    {
+        int moves = PlayerController.i.sectionMoves;
+        if (moves <= 1)
+        {
+            score += 3;
+        }
+        else if (moves <= 2)
+        {
+            score += 2;
+        }
+        else
+        {
+            score += 1;
+        }
+        scoreText.text = score.ToString();
+        PlayerController.i.sectionMoves = 0;
+    }
     void Start()
     {
-        GenerateSection(false);
+        Debug.Log("LevelManager Start");
+        scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        score = 0;
+        scoreText.text = score.ToString();
         SortTracks();
     }
 
@@ -47,20 +73,20 @@ public class LevelManager : MonoBehaviour
         SortTracks();
         currentTrack = tracksInMap[0];
     }
-    private void RemoveFirstTrack()
+
+    public void RemoveFirstTrack()
     {
+        if (tracksInMap.Count == 0 || tracksInMap[0] == currentTrack)
+        {
+            return;
+        }
         Destroy(tracksInMap[0]);
         tracksInMap.RemoveAt(0);
         SortTracks();
     }
     
-    public void GenerateSection(bool remove = true)
+    public void GenerateSection()
     {
-        // if (remove)
-        // {
-        //     RemoveFirstTrack();
-  
-        // }
         GenerateNormal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 15));
         GenerateHazard(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 30));
     }

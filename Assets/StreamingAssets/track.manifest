@@ -1,0 +1,53 @@
+ManifestFileVersion: 0
+CRC: 232615435
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 89427139debd668f2e5ab579b4adfa31
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 272c7a5a9194382e132598cf18b122cc
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 89427139debd668f2e5ab579b4adfa31
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9a23f7d4d2ebb3a4c8659d47279b06e4, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 134
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Straight_Windmill Variant.prefab
+- Assets/Resources/Straight.prefab
+- Assets/Resources/Straight_Walls Variant.prefab
+- Assets/Resources/Straight_Ramp_Easy.prefab
+Dependencies: []
