@@ -87,6 +87,10 @@ public class LevelManager : MonoBehaviour
     
     public void GenerateSection()
     {
+        if (hazardPrefabs.Count == 0)
+        {
+            Debug.Log("Creating Final Section");
+        }
         GenerateNormal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 15));
         GenerateHazard(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 30));
     }
