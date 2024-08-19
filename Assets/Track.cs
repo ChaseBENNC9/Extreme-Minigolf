@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+public enum TrackTypes
+{
+    Regular,
+    Hazard,
+    Final
+}
 public class Track : MonoBehaviour
 {
-    public bool isTypeHazard;
+    [SerializeField]
+    private TrackTypes type;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +22,7 @@ public class Track : MonoBehaviour
     {
         if (other.gameObject.name == "GolfBall")
         {
-            if( isTypeHazard)
+            if( type == TrackTypes.Hazard)
             {
                 PlayerController.i.sectionMoves = 0;
                 Debug.Log("Hazard Start");
@@ -36,7 +42,7 @@ public class Track : MonoBehaviour
         {
             this.GetComponent<BoxCollider>().isTrigger = false;
 
-            if (isTypeHazard)
+            if (type == TrackTypes.Hazard)
             {
                 LevelManager.instance.UpdateScore();
                 Debug.Log("Hazard End");

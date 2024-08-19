@@ -6,7 +6,7 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject straightPrefab;
+    private GameObject straightPrefab, finalPrefab;
     [SerializeField]
     private List<GameObject> hazardPrefabs = new ();
 
@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
 [SerializeField]
     private List<GameObject> tracksInMap = new ();
     public static LevelManager instance;
+    public bool finalGenerated = false;
 
     public TextMeshProUGUI scoreText;
     public int score;
@@ -87,9 +88,14 @@ public class LevelManager : MonoBehaviour
     
     public void GenerateSection()
     {
+        if(finalGenerated)
+            return;
         if (hazardPrefabs.Count == 0)
         {
-            Debug.Log("Creating Final Section");
+            GenerateNormal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 15));
+            GenerateFinal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 30));
+            finalGenerated = true;
+            return;
         }
         GenerateNormal(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 15));
         GenerateHazard(tracksInMap[tracksInMap.Count - 1].transform.position + new Vector3(0, 0, 30));
@@ -97,6 +103,11 @@ public class LevelManager : MonoBehaviour
     public void GenerateNormal(Vector3 position)
     {
         Instantiate(straightPrefab, position, Quaternion.identity);
+    }
+
+    public void GenerateFinal(Vector3 position)
+    {
+        Instantiate(finalPrefab, position, Quaternion.identity);
     }
 
     public void GenerateHazard(Vector3 position)
