@@ -40,6 +40,10 @@ public class Track : MonoBehaviour
     {
         if (other.gameObject.name == "GolfBall")
         {
+            if (type == TrackTypes.Final)
+            {
+                return;
+            }
             this.GetComponent<BoxCollider>().isTrigger = false;
 
             if (type == TrackTypes.Hazard)
