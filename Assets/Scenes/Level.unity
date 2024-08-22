@@ -454,6 +454,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 46.409, y: -58.186, z: -21.213}
+--- !u!1 &731350293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731350294}
+  - component: {fileID: 731350295}
+  m_Layer: 3
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731350294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731350293}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1028978101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &731350295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731350293}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 7, z: 1}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &797152402
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,9 +970,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7331359259286857441, guid: ae206ee32cbce9d48893b0c0b820cae1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 731350294}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae206ee32cbce9d48893b0c0b820cae1, type: 3}
+--- !u!4 &1028978101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7331359259286857441, guid: ae206ee32cbce9d48893b0c0b820cae1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1016185295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1029422898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1305,6 @@ GameObject:
   - component: {fileID: 1416808956}
   - component: {fileID: 1416808955}
   - component: {fileID: 1416808954}
-  - component: {fileID: 1416808960}
   - component: {fileID: 1416808959}
   m_Layer: 0
   m_Name: GolfBall
@@ -1378,61 +1440,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
   endPos: {x: 0, y: 0, z: 0}
+  speedModifier: 4
   line: {fileID: 527536483}
   sectionMoves: 0
---- !u!114 &1416808960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416808953}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 0630573f1181f04429c2d3ba6d6684c7,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: faee5784-b8d6-4d11-b37a-92b8ccff9541
-    m_ActionName: Mobile/Swipe Up[/Device Simulator Touchscreen/delta/up]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1c171d36-5ae0-4282-a4a0-61627ce405b5
-    m_ActionName: Mobile/New action
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9f61f4db-c011-4226-8e5d-b98933f8f5d5
-    m_ActionName: Mobile/TouchPos[/Device Simulator Touchscreen/primaryTouch/position,/Simulated
-      Touchscreen/primaryTouch/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f816e642-931c-44c0-9177-d6f7be91dd78
-    m_ActionName: Mobile/Drag[/Device Simulator Touchscreen/primaryTouch/delta,/Simulated
-      Touchscreen/primaryTouch/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b2b25e90-33b3-4ca1-9d0a-896111c51f6a
-    m_ActionName: Debug/Reload[/Keyboard/r]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Mobile
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1001 &1933493637
 PrefabInstance:
   m_ObjectHideFlags: 0
