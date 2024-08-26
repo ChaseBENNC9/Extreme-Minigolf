@@ -31,18 +31,7 @@ public class LevelManager : MonoBehaviour
     public void UpdateScore()
     {
         int moves = PlayerController.i.sectionMoves;
-        if (moves <= 1)
-        {
-            score += 3;
-        }
-        else if (moves <= 2)
-        {
-            score += 2;
-        }
-        else
-        {
-            score += 1;
-        }
+        score += moves;
         scoreText.text = score.ToString();
         PlayerController.i.sectionMoves = 0;
     }
