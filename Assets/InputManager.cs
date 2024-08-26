@@ -37,8 +37,9 @@ public class InputManager : MonoBehaviour
             Rigidbody rb = GameObject.Find("GolfBall").GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
-
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            int layerMast = 1 << 3;
+            layerMast = ~layerMast;
+            if (Physics.Raycast(ray, out RaycastHit hit , Mathf.Infinity, layerMast))
             {
                 if (hit.collider.gameObject.name == "GolfBall")
                 {
@@ -66,10 +67,16 @@ public class InputManager : MonoBehaviour
                         PlayerController.i.line.enabled = true;
                         PlayerController.i.line.positionCount = 2;
                         PlayerController.i.line.SetPosition(0, PlayerController.i.startPos);
-                        PlayerController.i.endPos = new(hit.point.x, 0, hit.point.z);
-                        Debug.Log("EndPos " + PlayerController.i.endPos + " " + hit.point + " StartPos " + PlayerController.i.startPos);
+                        PlayerController.i.endPos = ScreenToWorld(inputActions.Mobile.TouchPos.ReadValue<Vector2>());
                         PlayerController.i.line.SetPosition(1, new(hit.point.x, 0, hit.point.z));
+                        Debug.Log("EndPos " + PlayerController.i.endPos + " hit pos" + hit.point + " StartPos " + PlayerController.i.startPos);
                     }
+                else if(hit.collider.gameObject.name == "Collider")
+                {
+                    Debug.Log("Collider hit");
+                    
+
+                }
                 
             }
             else
@@ -83,21 +90,34 @@ public class InputManager : MonoBehaviour
     private Vector3 ScreenToWorld(Vector2 mousePos)
     {
         Debug.Log("ScreenToWorld");
+                    int layerMast = 1 << 3;
+            layerMast = ~layerMast;
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMast))
         {
+            Debug.DrawRay(ray.origin, ray.direction * 100, Color.white, 10);
             if (hit.collider.gameObject.tag == "Floor")
             {
-                Debug.Log(hit.collider.gameObject.name + ", " + hit.collider.gameObject.tag);
-                return new(hit.point.x, 0, hit.point.z);
+                Debug.Log("screenWorld " + new Vector3(hit.point.x, 0, hit.point.z));
+                Debug.Log("screenWorld " + PlayerController.i.endPos);
+                Debug.Log("screenWorld " + PlayerController.i.line.GetPosition(1));
+                Debug.Log("screenWorld " + hit.collider.gameObject);
+                if(hit.point.z < PlayerController.i.gameObject.transform.position.z)
+                    return new(hit.point.x, 0, hit.point.z);
+                else
+                    return Vector3.zero;
+
             }
             else
             {
-                Debug.Log(hit.collider.gameObject.name + ", " + hit.collider.gameObject.tag);
+                Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 10);
+                Debug.Log(hit.collider.gameObject.name + ",NO " + hit.collider.gameObject.tag);
                 return Vector3.zero;
 
             }
         }
+                Debug.Log("screenWorld2 " + new Vector3(hit.point.x, 0, hit.point.z));
+                Debug.Log("screenWorld2" + PlayerController.i.endPos);
         return Vector3.zero;
     }
 
@@ -134,7 +154,7 @@ public class InputManager : MonoBehaviour
 
         if (
             PlayerController.i.startPos == Vector3.zero
-            || PlayerController.i.line.GetPosition(0) == Vector3.zero
+            || PlayerController.i.line.GetPosition(0) == Vector3.zero || PlayerController.i.line.GetPosition(1) == Vector3.zero || PlayerController.i.endPos == Vector3.zero || PlayerController.i.line.enabled == false
         )
         {
             Debug.Log("Return InputManager:125");

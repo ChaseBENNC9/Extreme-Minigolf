@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 731350294}
   - component: {fileID: 731350295}
   m_Layer: 3
-  m_Name: GameObject
+  m_Name: COllider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
