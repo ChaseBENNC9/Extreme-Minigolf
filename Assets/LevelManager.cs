@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
         {
             instance = this;
         }
+
     }
 
     public void UpdateScore()
@@ -37,6 +38,7 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
+    
         Debug.Log("LevelManager Start");
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         score = 0;
