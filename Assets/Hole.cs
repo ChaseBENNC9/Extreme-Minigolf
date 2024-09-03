@@ -10,7 +10,7 @@ public class Hole : MonoBehaviour
         if (other.gameObject.name == "GolfBall")
         {
             
-            SceneManager.LoadScene("End");
+            LevelManager.instance.GameOver();
         }
 
     }

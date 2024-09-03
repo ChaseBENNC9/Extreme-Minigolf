@@ -26,16 +26,12 @@ public class Track : MonoBehaviour
             if( type == TrackTypes.Hazard)
             {
                 PlayerController.i.sectionMoves = 0;
-                Debug.Log("Hazard Start");
 
             }
             LevelManager.instance.currentTrack = this.gameObject;
-            Debug.Log("ds" + this.gameObject);
-            Debug.Log("ds" + LevelManager.instance.currentTrack);
 
             LevelManager.instance.GenerateSection();
             other.gameObject.GetComponent<PlayerController>().SetRespawn(this.transform.position);
-            Debug.Log("Updated respawn point");
 
         }
 
@@ -58,7 +54,6 @@ public class Track : MonoBehaviour
             if (type == TrackTypes.Hazard)
             {
                 LevelManager.instance.UpdateScore();
-                Debug.Log("Hazard End");
             }
         }
 

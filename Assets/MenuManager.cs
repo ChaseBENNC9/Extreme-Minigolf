@@ -9,11 +9,19 @@ using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
-
-    void Start()
+    public static MenuManager i;
+    void Awake()
     {
-
+        if (i == null)
+        {
+            i = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
     public void  DisableEvents(EventSystem eventSystem)
     {
        eventSystem.GetComponent<InputSystemUIInputModule>().DeactivateModule ();

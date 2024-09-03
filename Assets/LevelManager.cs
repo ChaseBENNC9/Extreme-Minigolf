@@ -21,7 +21,6 @@ public class LevelManager : MonoBehaviour
     public int score;
     void Awake()
     {
-        Debug.Log("LevelManager Awake");
         if (instance == null)
         {
             instance = this;
@@ -29,6 +28,10 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    public void GameOver()
+    {
+        MenuManager.i.OpenScene("End");
+    }
     public void UpdateScore()
     {
         int moves = PlayerController.i.sectionMoves;
@@ -39,7 +42,6 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
     
-        Debug.Log("LevelManager Start");
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         score = 0;
         scoreText.text = score.ToString();

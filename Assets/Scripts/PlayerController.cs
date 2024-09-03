@@ -67,18 +67,18 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("OutOfBounds"))
         {
-            if (LivesRemaining > 0)
+            if (LivesRemaining > 1)
             {
                 {
                     lifeIcons[LivesRemaining - 1].SetActive(false);
                     LivesRemaining--;
-                    Debug.Log("Player has " + LivesRemaining + " lives remaining");
+                    Debug.Log("Lives Remaining: " + LivesRemaining);
                     Respawn();
                 }
             }
             else
             {
-                Debug.Log("Player has no lives remaining");
+                LevelManager.instance.GameOver();
             }
         }
         
