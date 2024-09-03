@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     public LineRenderer line;
     public int sectionMoves = 0;
     public int LivesRemaining;
-    [SerializeField] private bool respawning = false;
     [SerializeField] private List<GameObject> lifeIcons = new List<GameObject>();
 
 
@@ -51,7 +50,7 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         startPos = Vector3.zero;
         endPos = Vector3.zero;
-        RespawnPosition = gameObject.transform.position;
+        SetRespawn(gameObject.transform.position);
         LivesRemaining = 3;
 
     }
@@ -68,25 +67,33 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("OutOfBounds"))
         {
-            gameObject.transform.position = RespawnPosition;
-            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             if (LivesRemaining > 0)
             {
-                if (!respawning)
                 {
                     lifeIcons[LivesRemaining - 1].SetActive(false);
                     LivesRemaining--;
                     Debug.Log("Player has " + LivesRemaining + " lives remaining");
-                    return;
+                    Respawn();
                 }
             }
             else
             {
                 Debug.Log("Player has no lives remaining");
             }
-            respawning = false;
         }
         
+    }
+
+    public void Respawn()
+    {
+        gameObject.transform.position = RespawnPosition;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        LevelManager.instance.currentTrack.GetComponent<BoxCollider>().isTrigger = true;
+    }
+    public void SetRespawn(Vector3 position)
+    {
+        RespawnPosition = new Vector3(0, 0.57f, position.z);
     }
 
 }

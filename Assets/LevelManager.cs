@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> hazardPrefabs = new ();
 
-    public GameObject currentTrack;
+    [HideInInspector] public GameObject currentTrack;
 
 [SerializeField]
     private List<GameObject> tracksInMap = new ();
@@ -63,7 +63,6 @@ public class LevelManager : MonoBehaviour
         }
         tracksInMap.Add(track);
         SortTracks();
-        currentTrack = tracksInMap[0];
     }
 
     public void RemoveFirstTrack()

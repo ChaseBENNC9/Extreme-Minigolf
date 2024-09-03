@@ -22,6 +22,7 @@ public class Track : MonoBehaviour
     {
         if (other.gameObject.name == "GolfBall")
         {
+
             if( type == TrackTypes.Hazard)
             {
                 PlayerController.i.sectionMoves = 0;
@@ -29,12 +30,18 @@ public class Track : MonoBehaviour
 
             }
             LevelManager.instance.currentTrack = this.gameObject;
+            Debug.Log("ds" + this.gameObject);
+            Debug.Log("ds" + LevelManager.instance.currentTrack);
 
             LevelManager.instance.GenerateSection();
+            other.gameObject.GetComponent<PlayerController>().SetRespawn(this.transform.position);
+            Debug.Log("Updated respawn point");
 
         }
 
     }
+
+
 
         void OnTriggerExit(Collider other)
     {
@@ -44,6 +51,8 @@ public class Track : MonoBehaviour
             {
                 return;
             }
+
+
             this.GetComponent<BoxCollider>().isTrigger = false;
 
             if (type == TrackTypes.Hazard)
