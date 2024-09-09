@@ -36,7 +36,7 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         GameManger.gameState = GameState.IN_GAME;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Level");
     }
     public void MainMenu()
     {
