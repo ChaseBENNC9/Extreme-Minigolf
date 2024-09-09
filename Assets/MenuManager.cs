@@ -31,10 +31,24 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
     
-    public void OpenScene(string scene)
+
+
+    public void StartGame()
     {
-        SceneManager.LoadScene(scene);
+        GameManger.gameState = GameState.IN_GAME;
+        SceneManager.LoadScene("Game");
     }
+    public void MainMenu()
+    {
+        GameManger.gameState = GameState.MENU;
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("End");
+    }
+
 
 
 }

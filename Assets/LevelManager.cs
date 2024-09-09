@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
-        MenuManager.i.OpenScene("End");
+        MenuManager.i.EndGame();
     }
     public void UpdateScore()
     {
