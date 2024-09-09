@@ -28,9 +28,19 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public void GameOver()
+    public void GameOver(bool win = false)
     {
-        GameManger.lastScore = score;
+        if (win)
+        {
+            GameManager.gameState = GameState.WIN;
+        }
+        else
+        {
+            GameManager.gameState = GameState.LOSE;
+        }
+        GameManager.lastScore = score;
+        Debug.Log("Score is " + score);
+        Debug.Log("Last Score is " + GameManager.lastScore);
         MenuManager.i.EndGame();
     }
     public void UpdateScore()

@@ -12,26 +12,31 @@ public class EndingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManger.gameState == GameState.WIN)
+        winnerParent.SetActive(false);
+        loserParent.SetActive(false);
+        if (GameManager.gameState == GameState.WIN)
         {
             Winner();
         }
-        else if (GameManger.gameState == GameState.LOSE)
+        else if (GameManager.gameState == GameState.LOSE)
         {
             Loser();
         }
         else
         {
             Debug.LogError("Game State not set");
+            Debug.LogError(GameManager.gameState);
+
         }
     }
 
     // Update is called once per frame
     private void Winner()
     {
+        Debug.Log("Winner" + GameManager.lastScore);
         winnerParent.SetActive(true);
         loserParent.SetActive(false);
-        scoreText.text = LevelManager.instance.score.ToString();
+        scoreText.text = GameManager.lastScore.ToString();
     }
     private void Loser()
     {

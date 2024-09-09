@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+
 /// <summary>
 /// Manages the global game variables.
 /// </summary>
@@ -14,4 +16,8 @@ public static class GameManager
     /// The last score the player got.
     /// </summary>
     public static int lastScore = 0;
+
+    public static int currentLevel = 1;
+
+
 }

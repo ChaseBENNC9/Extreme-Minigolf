@@ -22,6 +22,9 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+
+  
+
     public void  DisableEvents(EventSystem eventSystem)
     {
        eventSystem.GetComponent<InputSystemUIInputModule>().DeactivateModule ();
@@ -35,13 +38,13 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        GameManger.gameState = GameState.IN_GAME;
+        GameManager.gameState = GameState.IN_GAME;
         SceneManager.LoadScene("Level");
     }
     public void MainMenu()
     {
-        GameManger.gameState = GameState.MENU;
-        SceneManager.LoadScene("Menu");
+        GameManager.gameState = GameState.MENU;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void EndGame()
