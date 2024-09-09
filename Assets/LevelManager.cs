@@ -30,6 +30,7 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
+        GameManger.lastScore = score;
         MenuManager.i.EndGame();
     }
     public void UpdateScore()
