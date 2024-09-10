@@ -71,6 +71,18 @@ public class SaveGame
         Save(GameManager.levels);
     }
 
+    public static int GetScoreForLevel(int level)
+    {
+        foreach (LevelData levelData in GameManager.levels)
+        {
+            if (levelData.level == level)
+            {
+                return levelData.score;
+            }
+        }
+        return -1;
+    }
+
 
     public static void PrintLevels()
     {
