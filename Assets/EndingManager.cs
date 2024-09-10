@@ -35,10 +35,12 @@ public class EndingManager : MonoBehaviour
     {
         Debug.Log("Winner" + GameManager.lastScore);
         winnerParent.SetActive(true);
+        GameObject.Find("best").SetActive(false);
         loserParent.SetActive(false);
         scoreText.text = GameManager.lastScore.ToString();
         if (SaveGame.GetScoreForLevel(GameManager.currentLevel) >= 0 && SaveGame.GetScoreForLevel(GameManager.currentLevel) < GameManager.lastScore)
         {
+            GameObject.Find("best").SetActive(true);
             SaveGame.UpdateLevelScore(GameManager.currentLevel, GameManager.lastScore);
         }
 
