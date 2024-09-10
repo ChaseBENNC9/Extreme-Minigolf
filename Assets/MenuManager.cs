@@ -23,7 +23,25 @@ public class MenuManager : MonoBehaviour
     }
 
 
-  
+    private void Start()
+    {
+        if(SaveGame.Load() != null)
+        {
+            Debug.Log("Save file found");
+           GameManager.levels = SaveGame.Load();
+           Debug.Log("existing data found: " + GameManager.levels[0].level + " " + GameManager.levels[0].score);
+        }
+        else
+        {
+            Debug.Log("No save file found");
+            SaveGame.Save(GameManager.levels);
+            Debug.Log("new data created: " + GameManager.levels[0].level + " " + GameManager.levels[0].score);
+        }
+
+    }
+    private void ReadScore()
+    {
+    }
 
     public void  DisableEvents(EventSystem eventSystem)
     {

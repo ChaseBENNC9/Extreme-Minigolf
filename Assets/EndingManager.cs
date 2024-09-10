@@ -37,6 +37,7 @@ public class EndingManager : MonoBehaviour
         winnerParent.SetActive(true);
         loserParent.SetActive(false);
         scoreText.text = GameManager.lastScore.ToString();
+        SaveGame.UpdateLevelScore(GameManager.currentLevel, GameManager.lastScore);
     }
     private void Loser()
     {

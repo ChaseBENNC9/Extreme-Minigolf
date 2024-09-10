@@ -20,4 +20,10 @@ public static class GameManager
     public static int currentLevel = 1;
 
 
+    public static LevelData[] levels = new LevelData[]
+    {
+        new LevelData(){level = 1, score = 0},
+        new LevelData(){level = 2, score = 0},
+        new LevelData(){level = 3, score = 0},
+    };
 }
