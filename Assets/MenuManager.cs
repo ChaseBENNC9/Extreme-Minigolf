@@ -41,6 +41,7 @@ public class MenuManager : MonoBehaviour
     }
     private void ReadScore()
     {
+        
     }
 
     public void  DisableEvents(EventSystem eventSystem)
@@ -68,6 +69,11 @@ public class MenuManager : MonoBehaviour
     public void EndGame()
     {
         SceneManager.LoadScene("End");
+    }
+
+    public void Scores()
+    {
+        SceneManager.LoadScene("Scores");
     }
 
 
