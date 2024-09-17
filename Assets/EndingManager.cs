@@ -35,13 +35,19 @@ public class EndingManager : MonoBehaviour
     {
         Debug.Log("Winner" + GameManager.lastScore);
         winnerParent.SetActive(true);
-        GameObject.Find("best").SetActive(false);
+        GameObject.Find("best").GetComponent<TextMeshProUGUI>().text = "";
         loserParent.SetActive(false);
         scoreText.text = GameManager.lastScore.ToString();
-        if (SaveGame.GetScoreForLevel(GameManager.currentLevel) >= 0 && SaveGame.GetScoreForLevel(GameManager.currentLevel) < GameManager.lastScore)
+        if ((SaveGame.GetScoreForLevel(GameManager.currentLevel)) == 0 || (SaveGame.GetScoreForLevel(GameManager.currentLevel) > 0 && SaveGame.GetScoreForLevel(GameManager.currentLevel) > GameManager.lastScore))
         {
-            GameObject.Find("best").SetActive(true);
             SaveGame.UpdateLevelScore(GameManager.currentLevel, GameManager.lastScore);
+            Debug.Log("New Best Score");
+        GameObject.Find("best").GetComponent<TextMeshProUGUI>().text = "New Best Score!";
+        }
+        else
+        {
+            Debug.Log("Not a best score");
+            Debug.Log("Current Best Score: " + SaveGame.GetScoreForLevel(GameManager.currentLevel) + " Last Score: " + GameManager.lastScore);
         }
 
     }

@@ -28,6 +28,27 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    void Start()
+    {
+    
+        scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        score = 0;
+        scoreText.text = score.ToString();
+        SortTracks();
+        RangeOfHazard(false);
+    }
+
+    public void RangeOfHazard(bool range)
+    {
+        if (range)
+        {
+           scoreText.color = new Color32(65, 120, 54, 255);
+        }
+        else
+        {
+           scoreText.color = new Color32(142, 147, 141, 146);
+        }
+    }
     public void GameOver(bool win = false)
     {
         if (win)
@@ -49,14 +70,6 @@ public class LevelManager : MonoBehaviour
         score += moves;
         scoreText.text = score.ToString();
         PlayerController.i.sectionMoves = 0;
-    }
-    void Start()
-    {
-    
-        scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-        score = 0;
-        scoreText.text = score.ToString();
-        SortTracks();
     }
 
     void SortTracks()
