@@ -49,6 +49,8 @@ public class InputManager : MonoBehaviour
                         hit.collider.gameObject.transform.position.z
                     );
                     PlayerController.i.line.enabled = true;
+                    if (PlayerController.i.helpArrow != null)
+                        PlayerController.i.helpArrow.SetActive(false);
                     PlayerController.i.line.positionCount = 1;
                     PlayerController.i.line.SetPosition(0, PlayerController.i.startPos);
                     PlayerController.i.endPos = PlayerController.i.startPos;

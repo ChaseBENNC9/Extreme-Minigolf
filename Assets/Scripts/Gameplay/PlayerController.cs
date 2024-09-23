@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float speedModifier;
     public static PlayerController i;
     public LineRenderer line;
+    public GameObject helpArrow;
     public int sectionMoves = 0;
     public int LivesRemaining;
     [SerializeField] private List<GameObject> lifeIcons = new List<GameObject>();
@@ -103,6 +104,10 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         LevelManager.instance.currentTrack.GetComponent<BoxCollider>().isTrigger = true;
+        if(helpArrow != null)
+        {
+            helpArrow.SetActive(true);
+        }
     }
     public void SetRespawn(Vector3 position)
     {
