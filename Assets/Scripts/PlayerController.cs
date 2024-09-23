@@ -16,6 +16,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
+using RDG;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,7 +30,6 @@ public class PlayerController : MonoBehaviour
     public int sectionMoves = 0;
     public int LivesRemaining;
     [SerializeField] private List<GameObject> lifeIcons = new List<GameObject>();
-
 
 
     void Awake()
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         SetRespawn(gameObject.transform.position);
         LivesRemaining = 3;
 
+
     }
 
     public void Launch(Vector3 delta)
@@ -62,6 +63,14 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().AddForce(direction * speedModifier, ForceMode.Impulse);
         
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        GetComponent<AudioSource>().Play();
+        #if UNITY_ANDROID && !UNITY_EDITOR
+        Vibration.Vibrate(10);
+        #endif
+    }
+    
 
     void OnTriggerEnter(Collider collision)
     {
