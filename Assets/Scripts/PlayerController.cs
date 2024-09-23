@@ -65,10 +65,14 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        GetComponent<AudioSource>().Play();
-        #if UNITY_ANDROID && !UNITY_EDITOR
-        Vibration.Vibrate(10);
-        #endif
+        if (collision.gameObject.CompareTag("wall"))
+        {
+
+            GetComponent<AudioSource>().Play();
+            #if UNITY_ANDROID && !UNITY_EDITOR
+            Vibration.Vibrate(10);
+            #endif
+        }
     }
     
 
