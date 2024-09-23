@@ -26,6 +26,7 @@ public class Track : MonoBehaviour
             if( type == TrackTypes.Hazard)
             {
                 PlayerController.i.sectionMoves = 0;
+                LevelManager.instance.RangeOfHazard(true);
 
             }
             LevelManager.instance.currentTrack = this.gameObject;
@@ -54,6 +55,7 @@ public class Track : MonoBehaviour
             if (type == TrackTypes.Hazard)
             {
                 LevelManager.instance.UpdateScore();
+                LevelManager.instance.RangeOfHazard(false);
             }
         }
 
