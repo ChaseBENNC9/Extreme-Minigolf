@@ -97,51 +97,25 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Scores");
     }
 
+
+    private bool ValidateLevel(string levelName)
+    {
+       return SceneUtility.GetBuildIndexByScenePath("path or name of the scene") != -1;
+    }
+
     private void StartLevel(int level)
     {
-        GameManager.currentLevel = level;
         GameManager.gameState = GameState.IN_GAME;
-       switch(level)
-       {
-            case 1:
-                try
-                {
-                    SceneManager.LoadScene("Level 1");
-                }
-                catch
-                {
-                    Debug.Log("Level not found");
-                    SceneManager.LoadScene("MainMenu");
-                }   
-                break;
-            case 2:
-                try
-                {
-                    SceneManager.LoadScene("Level 2");
-                    SaveGame.UnlockLevel(2);
-                }
-                catch
-                {
-                    Debug.Log("Level not found");
-                    SceneManager.LoadScene("MainMenu");
-                }   
-                break;
-            case 3:
-                try
-                {
-                    SceneManager.LoadScene("Level 3");
-                    SaveGame.UnlockLevel(3);
-                }
-                catch
-                {
-                    Debug.Log("Level not found");
-                    SceneManager.LoadScene("MainMenu");
-                }   
-                break;
-            default:
-                SceneManager.LoadScene("MainMenu");
-                break;
-       }
+       if(ValidateLevel("Level" + level))
+        {
+            SceneManager.LoadScene("Level" + level);
+            SaveGame.UnlockLevel(level);
+        }
+        else
+        {
+            Debug.LogError("Level not found");
+            MainMenu();
+        }
     }
 
 
