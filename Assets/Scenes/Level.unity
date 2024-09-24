@@ -990,7 +990,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f631b5f24c5f3428560cd28bcf7787, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ce761cead15a834488ea8446a67afb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &963194230
@@ -1685,6 +1685,11 @@ PrefabInstance:
       propertyPath: line
       value: 
       objectReference: {fileID: 527536483}
+    - target: {fileID: 1922110882357001139, guid: 4c6ee53457d51f149b2f3f00974d839b,
+        type: 3}
+      propertyPath: helpArrow
+      value: 
+      objectReference: {fileID: 67915529}
     - target: {fileID: 1922110882357001139, guid: 4c6ee53457d51f149b2f3f00974d839b,
         type: 3}
       propertyPath: effect.amplitude
