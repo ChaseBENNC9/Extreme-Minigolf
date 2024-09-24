@@ -132,13 +132,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2826508501153314986}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13052596, y: -0, z: -0, w: 0.99144495}
-  m_LocalPosition: {x: 0, y: -1.1187568, z: 3.88}
+  m_LocalRotation: {x: -0.258819, y: 0, z: 0, w: 0.9659259}
+  m_LocalPosition: {x: 0, y: -0.73, z: 3.88}
   m_LocalScale: {x: 7, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9123386898225299234}
-  m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
 --- !u!33 &687073170391746779
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -701,7 +701,7 @@ PrefabInstance:
     - target: {fileID: 8107302094354042922, guid: ae206ee32cbce9d48893b0c0b820cae1,
         type: 3}
       propertyPath: m_Name
-      value: Straight_Ramp_Easy
+      value: Ramp_Steep
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
