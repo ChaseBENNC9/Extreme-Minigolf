@@ -106,9 +106,9 @@ public class MenuManager : MonoBehaviour
     private void StartLevel(int level)
     {
         GameManager.gameState = GameState.IN_GAME;
-       if(ValidateLevel("Level" + level))
+       if(ValidateLevel("Level " + level))
         {
-            SceneManager.LoadScene("Level" + level);
+            SceneManager.LoadScene("Level " + level);
             SaveGame.UnlockLevel(level);
         }
         else
