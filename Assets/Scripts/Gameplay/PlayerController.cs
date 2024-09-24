@@ -104,10 +104,7 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         LevelManager.instance.currentTrack.GetComponent<BoxCollider>().isTrigger = true;
-        if(helpArrow != null)
-        {
-            helpArrow.SetActive(true);
-        }
+
     }
     public void SetRespawn(Vector3 position)
     {
