@@ -22,8 +22,8 @@ public static class GameManager
 
     public static LevelData[] levels = new LevelData[]
     {
-        new LevelData(){level = 1, score = 0},
-        new LevelData(){level = 2, score = 0},
-        new LevelData(){level = 3, score = 0},
+        new LevelData(){level = 1, score = 0, unlocked = true},
+        new LevelData(){level = 2, score = 0, unlocked = false},
+        new LevelData(){level = 3, score = 0, unlocked = false},
     };
 }

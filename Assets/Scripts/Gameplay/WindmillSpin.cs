@@ -11,8 +11,7 @@ public class WindmillSpin : MonoBehaviour
         set
         {
             AnimationSpeed = value;
-            if(ac != null)
-                ac.speed = value;
+
         }
     }
     private Animator ac;
@@ -20,6 +19,7 @@ public class WindmillSpin : MonoBehaviour
     void Start()
     {
         ac = gameObject.transform.Find("spin").GetComponent<Animator>();
+        ac.SetFloat("speed", animationSpeed);
     }
 
 }

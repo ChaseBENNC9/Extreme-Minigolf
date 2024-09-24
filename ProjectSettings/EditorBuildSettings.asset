@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Scores.unity
     guid: ab19b6b1cdb84814a932f0cbe419ce57
   - enabled: 1
-    path: Assets/Scenes/Level.unity
+    path: Assets/Scenes/Level 1.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 46929b9b165c76443909f94808613ddc
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 5095391c43a83cf44895d0988ce2e479

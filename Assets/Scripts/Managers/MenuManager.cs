@@ -54,12 +54,33 @@ public class MenuManager : MonoBehaviour
     }
     
 
-
+/// <summary>
+/// Start new game
+/// </summary>
     public void StartGame()
     {
         GameManager.gameState = GameState.IN_GAME;
-        SceneManager.LoadScene("Level");
+        StartLevel(SaveGame.GetCurrentLevel());
     }
+
+
+    public void LevelSelect(int level)
+    {
+        StartLevel(level);
+    }
+    public void NextLevel()
+    {
+        StartLevel(SaveGame.GetCurrentLevel() + 1); //The method should catch an invalid level and return to menu
+    }
+ 
+
+    public void RestartLevel()
+    {
+        StartLevel(GameManager.currentLevel);
+    }
+
+
+
     public void MainMenu()
     {
         GameManager.gameState = GameState.MENU;
@@ -74,6 +95,53 @@ public class MenuManager : MonoBehaviour
     public void Scores()
     {
         SceneManager.LoadScene("Scores");
+    }
+
+    private void StartLevel(int level)
+    {
+        GameManager.currentLevel = level;
+        GameManager.gameState = GameState.IN_GAME;
+       switch(level)
+       {
+            case 1:
+                try
+                {
+                    SceneManager.LoadScene("Level 1");
+                }
+                catch
+                {
+                    Debug.Log("Level not found");
+                    SceneManager.LoadScene("MainMenu");
+                }   
+                break;
+            case 2:
+                try
+                {
+                    SceneManager.LoadScene("Level 2");
+                    SaveGame.UnlockLevel(2);
+                }
+                catch
+                {
+                    Debug.Log("Level not found");
+                    SceneManager.LoadScene("MainMenu");
+                }   
+                break;
+            case 3:
+                try
+                {
+                    SceneManager.LoadScene("Level 3");
+                    SaveGame.UnlockLevel(3);
+                }
+                catch
+                {
+                    Debug.Log("Level not found");
+                    SceneManager.LoadScene("MainMenu");
+                }   
+                break;
+            default:
+                SceneManager.LoadScene("MainMenu");
+                break;
+       }
     }
 
 

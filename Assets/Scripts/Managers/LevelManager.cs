@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public int score;
+    [Range(1, 3)]
+    [SerializeField] private int level = 1;
     void Awake()
     {
         if (instance == null)
@@ -36,6 +38,7 @@ public class LevelManager : MonoBehaviour
         scoreText.text = score.ToString();
         SortTracks();
         RangeOfHazard(false);
+        GameManager.currentLevel = level;
     }
 
     public void RangeOfHazard(bool range)
