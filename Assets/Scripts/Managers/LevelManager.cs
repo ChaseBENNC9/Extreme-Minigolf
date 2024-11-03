@@ -126,19 +126,7 @@ public class LevelManager : MonoBehaviour
     }
 
 
-/// <summary>
-/// Removes the first track in the list of tracks in the map
-/// </summary>
-    public void RemoveFirstTrack()
-    {
-        if (tracksInMap.Count == 0 || tracksInMap[0] == currentTrack)
-        {
-            return;
-        }
-        Destroy(tracksInMap[0]);
-        tracksInMap.RemoveAt(0);
-        SortTracks();
-    }
+
     
     /// <summary>
     /// Generates a new section of the map, a section consists of a normal track and a hazard track

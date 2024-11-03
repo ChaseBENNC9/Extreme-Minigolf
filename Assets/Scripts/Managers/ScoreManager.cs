@@ -18,9 +18,5 @@ public class ScoreManager : MonoBehaviour
         scoreText.GetComponent<TextMeshProUGUI>().text = score[0] + "\n" + score[1] + "\n" + score[2];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

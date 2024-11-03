@@ -135,14 +135,5 @@ public class SaveGame
         return -1;
     }
 
-/// <summary>
-/// Print the levels and scores to the console
-/// </summary>
-    public static void PrintLevels()
-    {
-        foreach (LevelData level in GameManager.levels)
-        {
-            Debug.Log("Level: " + level.level + " Score: " + level.score);
-        }
-    }
+
 }
