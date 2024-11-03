@@ -17,9 +17,14 @@ public static class GameManager
     /// </summary>
     public static int lastScore = 0;
 
+/// <summary>
+/// The current level the player is on.
+/// </summary>
     public static int currentLevel = 1;
 
-
+/// <summary>
+/// The initial data for each level. This will be overwritten when the game is saved or loaded.
+/// </summary>
     public static LevelData[] levels = new LevelData[]
     {
         new LevelData(){level = 1, score = 0, unlocked = true},

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// ProjectionLine class is used to change the color of the projection line based on the distance between the start and end points
+/// </summary>
 public class ProjectionLine : MonoBehaviour
 {
     public Gradient fullGradient;

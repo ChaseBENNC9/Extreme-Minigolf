@@ -12,10 +12,16 @@ public class LevelData
     public int score;
     public bool unlocked;
 }
+/// <summary>
+/// SaveGame class is used to save and load the game data
+/// </summary>
 public class SaveGame
 {
 
-
+    /// <summary>
+    /// Save the game data
+    /// </summary>
+    /// <param name="levels">The Array of Level Data to save to the file</param>
     public static void Save(LevelData[] levels)
     {
 
@@ -34,7 +40,10 @@ public class SaveGame
     }
 
 
-//return list of levels
+/// <summary>
+/// Load the game data from the file
+/// </summary>
+/// <returns>The Array of Level Data that was loaded from the file</returns>
     public static LevelData[] Load()
     {
         string path = Application.persistentDataPath + "/saveData.txt";
@@ -59,6 +68,11 @@ public class SaveGame
         }
     }
 
+/// <summary>
+/// Update the score of a specific level and save the data
+/// </summary>
+/// <param name="level">The Level to Overwrite</param>
+/// <param name="score">the new score value</param>
     public static void UpdateLevelScore(int level, int score)
     {
         Debug.Log("Updating level: " + level + " with score: " + score);
@@ -72,10 +86,14 @@ public class SaveGame
         Save(GameManager.levels);
     }
 
+    /// <summary>
+    /// Unlock a specific level and save the data
+    /// </summary>
+    /// <param name="level"></param>
     public static void UnlockLevel(int level)
     {
         Debug.Log("Unlocking level: " + level);
-        foreach (LevelData levelData in GameManager.levels)
+        foreach (LevelData levelData in GameManager.levels) //iterate through levels until the level is found
         {
             if (levelData.level == level)
             {
@@ -84,8 +102,9 @@ public class SaveGame
         }
         Save(GameManager.levels);
     }
-
-    //iterate through levels and return last unlocked level
+    /// <summary>
+    /// iterate through levels and return last unlocked level
+    /// </summary>
     public static int GetCurrentLevel()
     {
         int lastUnlocked = 0;
@@ -99,6 +118,11 @@ public class SaveGame
         return lastUnlocked;
     }
 
+/// <summary>
+/// Get the score for a specific level
+/// </summary>
+/// <param name="level"></param>
+/// <returns></returns>
     public static int GetScoreForLevel(int level)
     {
         foreach (LevelData levelData in GameManager.levels)
@@ -111,7 +135,9 @@ public class SaveGame
         return -1;
     }
 
-
+/// <summary>
+/// Print the levels and scores to the console
+/// </summary>
     public static void PrintLevels()
     {
         foreach (LevelData level in GameManager.levels)

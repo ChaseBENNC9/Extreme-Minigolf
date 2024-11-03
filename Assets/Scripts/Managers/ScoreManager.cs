@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+/// <summary>
+/// ScoreManager class is used to display the scores of the levels
+/// </summary>
 public class ScoreManager : MonoBehaviour
 {
     // Start is called before the first frame update

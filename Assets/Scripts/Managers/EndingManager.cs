@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+/// <summary>
+/// EndingManager class is used to manage the ending of the game, whether the player wins or loses
+/// </summary>
 public class EndingManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -30,7 +32,9 @@ public class EndingManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+/// <summary>
+/// If the player wins, the winner screen is displayed, checks if the score is a new best score
+/// </summary>
     private void Winner()
     {
         Debug.Log("Winner" + GameManager.lastScore);
@@ -51,6 +55,9 @@ public class EndingManager : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// If the player loses, the loser screen is displayed
+    /// </summary>
     private void Loser()
     {
         winnerParent.SetActive(false);
