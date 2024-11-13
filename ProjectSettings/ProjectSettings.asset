@@ -139,8 +139,11 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.0.1
-  preloadedAssets: []
+  bundleVersion: 1.2.0
+  preloadedAssets:
+  - {fileID: 11400000, guid: 85dab81747474e0419868d46287ff891, type: 2}
+  - {fileID: -3090173253702464057, guid: de6453da5e0b5e046983af1f6c2f00ae, type: 2}
+  - {fileID: 11400000, guid: f3c227e8f669ced44af6718c09278015, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -264,7 +267,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
+  AndroidKeystoreName: C:/Users/chase/.android/debug.keystore
   AndroidKeyaliasName: 
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0

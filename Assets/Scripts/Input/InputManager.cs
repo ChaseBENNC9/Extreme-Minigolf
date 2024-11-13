@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// Used to manage the functions of the input system
+/// </summary>
 public class InputManager : MonoBehaviour
 {
     private GolfGameInputActions inputActions;
@@ -29,6 +31,10 @@ public class InputManager : MonoBehaviour
         inputActions.Debug.Reload.performed += context => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+/// <summary>
+/// Used when a touch is first detected on the screen
+/// </summary>
+/// <param name="context"></param>
     private void TouchStart(InputAction.CallbackContext context)
     {
         if (enabled)
@@ -93,7 +99,11 @@ public class InputManager : MonoBehaviour
             }
         }
     }
-
+/// <summary>
+/// Converts the screen position to world position to update the line renderer
+/// </summary>
+/// <param name="mousePos"></param>
+/// <returns></returns>
     private Vector3 ScreenToWorld(Vector2 mousePos)
     {
         int layerMast = 1 << 3;
@@ -118,12 +128,22 @@ public class InputManager : MonoBehaviour
         }
         return Vector3.zero;
     }
-
+    /// <summary>
+    /// Calculates the difference between two positions to determine the direction of the ball
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
     private Vector3 PositionDifference(Vector3 start, Vector3 end)
     {
         return new(end.x - start.x, 0, end.z - start.z);
     }
 
+
+/// <summary>
+/// When the player inputs a drag
+/// </summary>
+/// <param name="context"></param>
     private void OnDrag(InputAction.CallbackContext context)
     {
         if (
@@ -146,6 +166,10 @@ public class InputManager : MonoBehaviour
             PlayerController.i.line.enabled = false;
     }
 
+/// <summary>
+/// when the touch is released
+/// </summary>
+/// <param name="context"></param>
     private void TouchEnd(InputAction.CallbackContext context)
     {
         if (!enabled)

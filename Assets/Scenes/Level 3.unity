@@ -1263,14 +1263,17 @@ MonoBehaviour:
   hazardPrefabs:
   - {fileID: 6550198155045672605, guid: 2b6ffa4db3092a34dafbab4e04deaa0c, type: 3}
   - {fileID: 1777688730758203883, guid: dda60494194ecd542997dfb3c998a962, type: 3}
-  - {fileID: 7755229482356263401, guid: 33f75eafa3c472942bbc520336e3eda8, type: 3}
+  - {fileID: 7755229482356263401, guid: d6017cfd84ea20a47971f8abfff7ffd7, type: 3}
   - {fileID: 6550198155045672605, guid: 2b6ffa4db3092a34dafbab4e04deaa0c, type: 3}
   - {fileID: 7755229482356263401, guid: d6017cfd84ea20a47971f8abfff7ffd7, type: 3}
+  - {fileID: 1777688730758203883, guid: dda60494194ecd542997dfb3c998a962, type: 3}
+  - {fileID: 6550198155045672605, guid: 2b6ffa4db3092a34dafbab4e04deaa0c, type: 3}
   currentTrack: {fileID: 0}
   tracksInMap: []
   finalGenerated: 0
   scoreText: {fileID: 0}
   score: 0
+  level: 3
 --- !u!4 &1044980665
 Transform:
   m_ObjectHideFlags: 0

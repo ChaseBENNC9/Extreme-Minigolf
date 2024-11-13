@@ -123,6 +123,10 @@ public class MenuManager : MonoBehaviour
 /// <param name="level"></param>
     private void StartLevel(int level)
     {
+        if(level < 1 || level > 3) //If the level is invalid, set it to 1
+        {
+            level = 1;
+        }
         GameManager.gameState = GameState.IN_GAME;
        if(ValidateLevel("Level " + level)) //Check if the level exists
         {
@@ -131,7 +135,7 @@ public class MenuManager : MonoBehaviour
         }
         else //If the level does not exist, return to the main menu
         {
-            Debug.LogError("Level not found");
+            Debug.LogError("Level not found " + level);
             MainMenu();
         }
     }
